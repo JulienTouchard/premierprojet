@@ -28,11 +28,13 @@
                             for (const [key, value] of Object.entries(json)) {
                                 console.log(value);
                                 result.innerHTML += `
-                                <div>
-                                    <span>${value.title}</span>
-                                    <span>${value.cast}</span>
-                                    <span>${value.year}</span>
-                                </div>
+                                <ul>
+                                    <li>${value.id}</li>
+                                    <li>${value.title}</li>
+                                    <li>${value.cast}</li>
+                                    <li>${value.year}</li>
+                                    <li><img src="{{ asset('./posters/') }}${value.id}.jpg"></li>
+                                </ul>
                                 `
                             }
                         }

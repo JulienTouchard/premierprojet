@@ -112,6 +112,7 @@ final class MoviesfullController extends AbstractController
     {
         $jsonResponse = [];
         foreach ($films as $key => $value) {
+            $jsonResponse[$key]['id'] =  $value->getId('id');
             $jsonResponse[$key]['title'] =  $value->getTitle('title');
             $jsonResponse[$key]['year'] =  $value->getYear('year');
             $jsonResponse[$key]['cast'] =  $value->getCast('cast');
