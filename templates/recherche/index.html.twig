@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RechercheController!{% endblock %}
+
+{% block body %}
+<select name="field" id="">
+    <option value="year">year</option>
+    <option value="title">title</option>
+    <option value="cast">cast</option>
+</select>
+<input type="text" name="searchText">
+<button id="submit">Recherche</button>
+<div id="result"></div>
+<script>
+    const field = document.querySelector("select[name='field']");
+    const searchText = document.querySelector("input[name='searchText']");
+    const submit = document.getElementById("submit");
+    const result = document.getElementById("result");
+    submit.addEventListener("click", () => {
+        result.innerHTML = "";
+        switch (field.value) {
+            case "year":
+                fetch("{{ path('app_moviesfull_filmbyyear')}}?year=" + searchText.value)
+                    .then(response => response.json())
+                    .then(json => {
+                        console.log(json)
+                        if (json.length) {
+                            for (const [key, value] of Object.entries(json)) {
+                                console.log(value);
+                                result.innerHTML += `
+                                <div>
+                                    <span>${value.title}</span>
+                                    <span>${value.cast}</span>
+                                    <span>${value.year}</span>
+                                </div>
+                                `
+                            }
+                        }
+                    })
+
+                break;
+        }
+    })
+</script>
+
+{% endblock %}
