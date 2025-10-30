@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moviesfull{% endblock %}
+
+{% block body %}
+    <h1>Moviesfull</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ moviesfull.id }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ moviesfull.slug }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ moviesfull.title }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ moviesfull.year }}</td>
+            </tr>
+            <tr>
+                <th>Genres</th>
+                <td>{{ moviesfull.genres }}</td>
+            </tr>
+            <tr>
+                <th>Plot</th>
+                <td>{{ moviesfull.plot }}</td>
+            </tr>
+            <tr>
+                <th>Directors</th>
+                <td>{{ moviesfull.directors }}</td>
+            </tr>
+            <tr>
+                <th>Cast</th>
+                <td>{{ moviesfull.cast }}</td>
+            </tr>
+            <tr>
+                <th>Writers</th>
+                <td>{{ moviesfull.writers }}</td>
+            </tr>
+            <tr>
+                <th>Runtime</th>
+                <td>{{ moviesfull.runtime }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_moviesfull_index') }}">back to list</a>
+
+    <a href="{{ path('app_moviesfull_edit', {'id': moviesfull.id}) }}">edit</a>
+
+    {{ include('moviesfull/_delete_form.html.twig') }}
+{% endblock %}

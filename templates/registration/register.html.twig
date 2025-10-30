@@ -1,0 +1,74 @@
+{# templates/registration/register.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <h1 class="title has-text-centered">Créer un compte</h1>
+
+      {{ form_start(registrationForm, {'attr': {'class': 'box'}}) }}
+
+      {# Email #}
+      <div class="field">
+        {{ form_label(registrationForm.email, null, {'label_attr': {'class': 'label'}}) }}
+        <div class="control has-icons-left">
+          {{ form_widget(registrationForm.email, {'attr': {'class': 'input', 'placeholder': 'exemple@domaine.fr'}}) }}
+          <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+        </div>
+        {{ form_errors(registrationForm.email) }}
+      </div>
+
+      {# Mot de passe #}
+      <div class="field">
+        {{ form_label(registrationForm.plainPassword, 'Mot de passe', {'label_attr': {'class': 'label'}}) }}
+        <div class="control has-icons-left">
+          {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'input', 'placeholder': 'Votre mot de passe'}}) }}
+          <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
+        </div>
+        {{ form_errors(registrationForm.plainPassword) }}
+      </div>
+
+      {# Nom #}
+      <div class="field">
+        {{ form_label(registrationForm.nom, null, {'label_attr': {'class': 'label'}}) }}
+        <div class="control">
+          {{ form_widget(registrationForm.nom, {'attr': {'class': 'input', 'placeholder': 'Votre nom'}}) }}
+        </div>
+        {{ form_errors(registrationForm.nom) }}
+      </div>
+      {# aVATAR #}
+      <div class="field">
+        {{ form_label(registrationForm.avatar, null, {'label_attr': {'class': 'label'}}) }}
+        <div class="control">
+          {{ form_widget(registrationForm.avatar, {'attr': {'class': 'input', 'placeholder': 'Votre fichier'}}) }}
+        </div>
+        {{ form_errors(registrationForm.avatar) }}
+      </div>
+
+      {# Conditions d’utilisation #}
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            {{ form_widget(registrationForm.agreeTerms) }}
+            J’accepte les conditions d’utilisation
+          </label>
+        </div>
+        {{ form_errors(registrationForm.agreeTerms) }}
+      </div>
+
+      {# Bouton #}
+      <div class="field is-grouped is-grouped-centered mt-4">
+        <div class="control">
+          <button type="submit" class="button is-primary">
+            <span class="icon"><i class="fas fa-user-plus"></i></span>
+            <span>S’inscrire</span>
+          </button>
+        </div>
+      </div>
+
+      {{ form_end(registrationForm) }}
+    </div>
+  </div>
+{% endblock %}

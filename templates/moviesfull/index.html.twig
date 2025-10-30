@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moviesfull index{% endblock %}
+
+{% block body %}
+    <h1>Moviesfull index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Slug</th>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Genres</th>
+                <th>Plot</th>
+                <th>Directors</th>
+                <th>Cast</th>
+                <th>Writers</th>
+                <th>Runtime</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for moviesfull in moviesfulls %}
+            <tr>
+                <td>{{ moviesfull.id }}</td>
+                <td>{{ moviesfull.slug }}</td>
+                <td>{{ moviesfull.title }}</td>
+                <td>{{ moviesfull.year }}</td>
+                <td>{{ moviesfull.genres }}</td>
+                <td>{{ moviesfull.plot }}</td>
+                <td>{{ moviesfull.directors }}</td>
+                <td>{{ moviesfull.cast }}</td>
+                <td>{{ moviesfull.writers }}</td>
+                <td>{{ moviesfull.runtime }}</td>
+                <td>
+                    <a href="{{ path('app_moviesfull_show', {'id': moviesfull.id}) }}">show</a>
+                    <a href="{{ path('app_moviesfull_edit', {'id': moviesfull.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_moviesfull_new') }}">Create new</a>
+{% endblock %}
